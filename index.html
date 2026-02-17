@@ -29,7 +29,7 @@ html, body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(255, 212, 0, 0.5); /* 50% opacidade */
+    background: rgba(255, 212, 0, 0.5);
     backdrop-filter: blur(8px);
     color: #FFFFFF;
     border-radius: 18px;
@@ -61,36 +61,53 @@ html, body {
     z-index: 1;
 }
 
+/* ============================= */
+/* HIERARQUIA DE FONTES */
+/* ============================= */
+
+/* CIDADE */
 .city {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 6px;
 }
 
+/* ÍCONE */
 .weather-icon {
-    width: 90px;
-    height: 90px;
+    width: 95px;
+    height: 95px;
 }
 
+/* CLIMA + HORA */
 .info-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     margin-top: 6px;
-    font-size: 45px;
+    font-size: 42px;
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    text-shadow: 0 0 12px rgba(0,0,0,0.7);
 }
 
 .separator {
     opacity: 0.6;
 }
 
-#clock {
-    font-size: 26px;
+/* CONTEÚDO ORIGINAL */
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+/* ANUNCIE AQUI */
+.card-title-ad {
+    font-size: 22px;
+    font-weight: bold;
     opacity: 0.95;
+    text-shadow: 0 0 8px rgba(0,0,0,0.6);
 }
 
 .logo {
@@ -121,10 +138,10 @@ html, body {
         </div>
     </div>
 
-    <!-- CARD 2 - LOGO -->
+    <!-- CARD 2 - CONTEÚDO ORIGINAL -->
     <div class="card" id="card2">
         <img src="https://via.placeholder.com/220x120.png?text=LOGO" class="logo">
-        <div style="font-size:22px; font-weight:bold; text-shadow: 0 0 8px rgba(0,0,0,0.6);">
+        <div class="card-title">
             CONTEÚDO ORIGINAL
         </div>
     </div>
@@ -132,7 +149,7 @@ html, body {
     <!-- CARD 3 - ANÚNCIO -->
     <div class="card" id="card3">
         <img id="adGif" class="gif-ad" src="" style="display:none;">
-        <div id="adText" style="font-size:22px; font-weight:bold; text-shadow: 0 0 8px rgba(0,0,0,0.6);">
+        <div id="adText" class="card-title-ad">
             Anuncie Aqui
         </div>
     </div>
@@ -142,7 +159,7 @@ html, body {
 <script>
 const latitude = -8.05;
 const longitude = -34.9;
-const gifPath = ""; // coloque seu GIF aqui se quiser
+const gifPath = ""; // coloque seu GIF aqui
 
 async function getWeather() {
     try {
@@ -177,7 +194,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 getWeather();
-setInterval(getWeather, 600000); // atualiza clima a cada 10 min
+setInterval(getWeather, 600000);
 
 const cards = [
     {el: document.getElementById("card1"), duration: 15000},
